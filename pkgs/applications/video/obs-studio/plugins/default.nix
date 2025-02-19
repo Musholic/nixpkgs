@@ -8,6 +8,8 @@
 {
   advanced-scene-switcher = qt6Packages.callPackage ./advanced-scene-switcher { };
 
+  distroav = qt6Packages.callPackage ./distroav { };
+
   droidcam-obs = callPackage ./droidcam-obs { };
 
   input-overlay = qt6Packages.callPackage ./input-overlay.nix { };
@@ -39,8 +41,6 @@
   obs-multi-rtmp = qt6Packages.callPackage ./obs-multi-rtmp { };
 
   obs-mute-filter = callPackage ./obs-mute-filter.nix { };
-
-  obs-ndi = qt6Packages.callPackage ./obs-ndi { };
 
   obs-nvfbc = callPackage ./obs-nvfbc.nix { };
 
