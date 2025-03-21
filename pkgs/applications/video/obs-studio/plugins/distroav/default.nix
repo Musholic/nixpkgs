@@ -10,8 +10,8 @@
 }:
 
 stdenv.mkDerivation rec {
-  pname = "obs-ndi";
-  version = "4.14.1";
+  pname = "distroav";
+  version = "6.0.0";
 
   nativeBuildInputs = [
     cmake
@@ -25,10 +25,10 @@ stdenv.mkDerivation rec {
   ];
 
   src = fetchFromGitHub {
-    owner = "Palakis";
-    repo = "obs-ndi";
+    owner = "DistroAV";
+    repo = "DistroAV";
     rev = version;
-    sha256 = "sha256-ex/fZmZpFM6GTKNBQClzSf6Ns0Yts5+0PAmf5mIQCwc=";
+    sha256 = "sha256-pr/5XCLo5fzergIQrYFC9o9K+KuP4leDk5/oRe5ct9Q=";
   };
 
   patches = [
