@@ -1,6 +1,5 @@
 {
   lib,
-  stdenv,
   buildPythonPackage,
   fetchFromGitHub,
 
@@ -21,18 +20,19 @@
   pyarrow,
   pytest-xdist,
   pytestCheckHook,
+  pythonAtLeast,
 }:
 
 buildPythonPackage rec {
   pname = "awkward";
-  version = "2.7.4";
+  version = "2.8.0";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "scikit-hep";
     repo = "awkward";
     tag = "v${version}";
-    hash = "sha256-OXSl+8sfrx+JlLu40wHf+98WVNNwm9uxvsnGXRDztDg=";
+    hash = "sha256-dr8DUY6T6fvtMASdM9U+XQN0dVP8AKvwa1gwHfOz3Dw=";
   };
 
   build-system = [
@@ -66,21 +66,10 @@ buildPythonPackage rec {
     "test_recordarray"
   ];
 
-  disabledTestPaths =
-    [
-      # Need to be run on a GPU platform.
-      "tests-cuda"
-    ]
-    ++ lib.optionals (stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isAarch64) [
-      # Fatal Python error: Segmentation fault at:
-      # numba/typed/typedlist.py", line 344 in append
-      "tests/test_0118_numba_cpointers.py"
-      "tests/test_0397_arrays_as_constants_in_numba.py"
-      "tests/test_1677_array_builder_in_numba.py"
-      "tests/test_2055_array_builder_check.py"
-      "tests/test_2349_growablebuffer_in_numba.py"
-      "tests/test_2408_layoutbuilder_in_numba.py"
-    ];
+  disabledTestPaths = [
+    # Need to be run on a GPU platform.
+    "tests-cuda"
+  ];
 
   meta = {
     description = "Manipulate JSON-like data with NumPy-like idioms";

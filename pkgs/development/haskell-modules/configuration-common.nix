@@ -521,22 +521,22 @@ self: super: {
 
   # Manually maintained
   cachix-api = overrideCabal (drv: {
-    version = "1.7.6";
+    version = "1.7.7";
     src = pkgs.fetchFromGitHub {
       owner = "cachix";
       repo = "cachix";
-      rev = "v1.7.6";
-      hash = "sha256-8HFvG7fvIFbgtaYAY2628Tb89fA55nPm2jSiNs0/Cws=";
+      rev = "v1.7.7";
+      hash = "sha256-D0gP8srrX0qj+wNYNPdtVJsQuFzIng3q43thnHXQ/es=";
     };
     postUnpack = "sourceRoot=$sourceRoot/cachix-api";
   }) super.cachix-api;
   cachix = (overrideCabal (drv: {
-    version = "1.7.6";
+    version = "1.7.7";
     src = pkgs.fetchFromGitHub {
       owner = "cachix";
       repo = "cachix";
-      rev = "v1.7.6";
-      hash = "sha256-8HFvG7fvIFbgtaYAY2628Tb89fA55nPm2jSiNs0/Cws=";
+      rev = "v1.7.7";
+      hash = "sha256-D0gP8srrX0qj+wNYNPdtVJsQuFzIng3q43thnHXQ/es=";
     };
     postUnpack = "sourceRoot=$sourceRoot/cachix";
   }) (lib.pipe
@@ -1950,6 +1950,15 @@ self: super: {
     hspec-meta = self.hspec-meta_2_7_8;
   };
   hspec-core_2_7_10 = doJailbreak (dontCheck super.hspec-core_2_7_10);
+
+  # Disable test cases that were broken by insignificant changes in icu 76
+  # https://github.com/haskell/text-icu/issues/108
+  text-icu = overrideCabal (drv: {
+    testFlags = drv.testFlags or [ ] ++ [
+      "-t"
+      "!Test cases"
+    ];
+  }) super.text-icu;
 
   # waiting for aeson bump
   servant-swagger-ui-core = doJailbreak super.servant-swagger-ui-core;

@@ -21,7 +21,7 @@
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "palemoon-bin";
-  version = "33.6.0";
+  version = "33.6.1";
 
   src = finalAttrs.passthru.sources."gtk${if withGTK3 then "3" else "2"}";
 
@@ -48,7 +48,7 @@ stdenv.mkDerivation (finalAttrs: {
     ];
 
   desktopItems = [
-    (makeDesktopItem rec {
+    (makeDesktopItem {
       name = "palemoon-bin";
       desktopName = "Pale Moon Web Browser";
       comment = "Browse the World Wide Web";
@@ -172,11 +172,11 @@ stdenv.mkDerivation (finalAttrs: {
       {
         gtk3 = fetchzip {
           urls = urlRegionVariants "gtk3";
-          hash = "sha256-fOha0D8drFbKtfl/UA4MqzBhhBrvS3T81XP09RZQc9c=";
+          hash = "sha256-OaiY34UcPZ0zxDZP/VrJyEXou2Kz77SqMuJMiVCRIbA=";
         };
         gtk2 = fetchzip {
           urls = urlRegionVariants "gtk2";
-          hash = "sha256-r8sAkQ7XiYs39VZjvegVgx7KrfB8WyZfcl/XgGV/kwA=";
+          hash = "sha256-Yq9bpvyNP+tOKvcZbjxbNhrtimi6Ylb5vBytx+OEgiI=";
         };
       };
 

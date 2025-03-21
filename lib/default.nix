@@ -141,7 +141,7 @@ let
       isStorePath isStringLike
       isValidPosixName toShellVar toShellVars trim trimWith
       escapeRegex escapeURL escapeXML replaceChars lowerChars
-      upperChars toLower toUpper addContextFrom splitString
+      upperChars toLower toUpper toSentenceCase addContextFrom splitString
       removePrefix removeSuffix versionOlder versionAtLeast
       getName getVersion match split
       cmakeOptionType cmakeBool cmakeFeature
@@ -156,6 +156,7 @@ let
       makeScope makeScopeWithSplicing makeScopeWithSplicing'
       extendMkDerivation;
     inherit (self.derivations) lazyDerivation optionalDrvAttr warnOnInstantiate;
+    inherit (self.generators) mkLuaInline;
     inherit (self.meta) addMetaAttrs dontDistribute setName updateName
       appendToName mapDerivationAttrset setPrio lowPrio lowPrioSet hiPrio
       hiPrioSet licensesSpdx getLicenseFromSpdxId getLicenseFromSpdxIdOr

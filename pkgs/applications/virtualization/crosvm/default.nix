@@ -19,21 +19,21 @@
   pkgsCross,
 }:
 
-rustPlatform.buildRustPackage rec {
+rustPlatform.buildRustPackage {
   pname = "crosvm";
-  version = "0-unstable-2025-02-04";
+  version = "0-unstable-2025-03-14";
 
   src = fetchgit {
     url = "https://chromium.googlesource.com/chromiumos/platform/crosvm";
-    rev = "d8e0f16c287b962505c8746c3be08323492186c9";
-    hash = "sha256-kiWYJLtQK9RWWRCHdVAVNcZhb4NPcLd1KIQKe3xZH+A=";
+    rev = "af765802907dafe1ae1d1f39704c5020a882d362";
+    hash = "sha256-p15gljpEaSloorT37J8Akn5DaqkjVD/QInik4FaF1HE=";
     fetchSubmodules = true;
   };
 
   separateDebugInfo = true;
 
   useFetchCargoVendor = true;
-  cargoHash = "sha256-ZXJQust+NOWU70HUNIze6W1xKG+aCig0keK5HXv1D7w=";
+  cargoHash = "sha256-3+gV/4l+N4U2zZWU+UtA1gcmdwnXavbhBPQOB3hhGDk=";
 
   nativeBuildInputs = [
     pkg-config

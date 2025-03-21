@@ -45,13 +45,13 @@
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "fastfetch";
-  version = "2.36.1";
+  version = "2.39.0";
 
   src = fetchFromGitHub {
     owner = "fastfetch-cli";
     repo = "fastfetch";
     tag = finalAttrs.version;
-    hash = "sha256-gvhhYZ6wp3t+GNL8lyKaC6IHZXxu+CQo40rsJARNKY0=";
+    hash = "sha256-2XuODYi3kC9d1rO1LFAdixS7SrrjTOgj+Tm3waMGa+M=";
   };
 
   outputs = [
@@ -117,7 +117,7 @@ stdenv.mkDerivation (finalAttrs: {
       (lib.cmakeBool "ENABLE_SYSTEM_YYJSON" true)
       (lib.cmakeBool "ENABLE_GLX" x11Support)
       (lib.cmakeBool "ENABLE_RPM" rpmSupport)
-      (lib.cmakeBool "ENABLE_VULKAN" x11Support)
+      (lib.cmakeBool "ENABLE_VULKAN" vulkanSupport)
       (lib.cmakeBool "ENABLE_WAYLAND" waylandSupport)
       (lib.cmakeBool "ENABLE_X11" x11Support)
       (lib.cmakeBool "ENABLE_XCB" x11Support)
