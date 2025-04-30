@@ -1,4 +1,10 @@
-{ callPackage, fetchpatch2, openssl, python3, enableNpm ? true }:
+{
+  callPackage,
+  fetchpatch2,
+  openssl,
+  python3,
+  enableNpm ? true,
+}:
 
 let
   buildNodejs = callPackage ./nodejs.nix {
@@ -54,6 +60,11 @@ buildNodejs {
       url = "https://github.com/nodejs/node/commit/869d0cbca3b0b5e594b3254869a34d549664e089.patch?full_index=1";
       hash = "sha256-BBBShQwU20TSY8GtPehQ9i3AH4ZKUGIr8O0bRsgrpNo=";
       revert = true;
+    })
+    # fix test failure on macos 15.4
+    (fetchpatch2 {
+      url = "https://github.com/nodejs/node/commit/33f6e1ea296cd20366ab94e666b03899a081af94.patch?full_index=1";
+      hash = "sha256-aVBMcQlhQeviUQpMIfC988jjDB2BgYzlMYsq+w16mzU=";
     })
   ];
 }
